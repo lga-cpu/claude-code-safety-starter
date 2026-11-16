@@ -27,6 +27,7 @@ blocks the ones that can delete many files at once.
 | `hooks/selftest.py` | Checks that the hook really works on your computer. Deletes nothing. |
 | `hooks/settings.example.windows.json` | Settings for Windows (uses `python`). |
 | `hooks/settings.example.json` | Settings for macOS / Linux (uses `python3`). |
+| `SKILL.md` | Optional skill `check-delete-guard`: Claude checks the install and explains the result. Changes nothing. |
 | `CHECKLIST.md` | One page: backup, install, check. |
 | `LICENSE` | MIT. |
 
@@ -139,6 +140,18 @@ from Claude Code itself, not from this hook.
 If Claude then suggests turning the hook off, don't do it straight away. Read why it stopped. If
 you really want that delete, do it yourself in File Explorer (it uses the Recycle Bin), and leave
 the hook on.
+
+## Optional: let Claude check it for you
+
+`SKILL.md` is a small skill called `check-delete-guard`. It checks Python, the two files, the
+settings, and runs the self-test, then tells you in plain words whether you are protected. It only
+looks; it changes nothing and runs no real delete.
+
+To use it, make the folder `.claude\skills\check-delete-guard\` in your project and copy
+`SKILL.md` into it. In a new Claude Code session, ask: *"Is my delete guard working?"*
+
+Tested with Haiku on three dummy projects (hook installed, hook missing, wrong program name in the
+settings): it gave the right answer each time and no file changed.
 
 ## How it was tested
 
