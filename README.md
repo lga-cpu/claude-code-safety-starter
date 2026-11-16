@@ -27,7 +27,7 @@ blocks the ones that can delete many files at once.
 | `hooks/selftest.py` | Checks that the hook really works on your computer. Deletes nothing. |
 | `hooks/settings.example.windows.json` | Settings for Windows (uses `python`). |
 | `hooks/settings.example.json` | Settings for macOS / Linux (uses `python3`). |
-| `SKILL.md` | Optional skill `check-delete-guard`: Claude checks the install and explains the result. Changes nothing. |
+| `SKILL.md` | Optional skill `check-delete-guard`: Claude checks the install and explains the result. Edits no file. |
 | `CHECKLIST.md` | One page: backup, install, check. |
 | `LICENSE` | MIT. |
 
@@ -145,13 +145,21 @@ the hook on.
 
 `SKILL.md` is a small skill called `check-delete-guard`. It checks Python, the two files, the
 settings, and runs the self-test, then tells you in plain words whether you are protected. It only
-looks; it changes nothing and runs no real delete.
+looks: it edits no file and runs no real delete. (The self-test starts each Python hook listed in
+your settings once. If you added other hooks of your own, they run once too.)
 
-To use it, make the folder `.claude\skills\check-delete-guard\` in your project and copy
-`SKILL.md` into it. In a new Claude Code session, ask: *"Is my delete guard working?"*
+To use it:
+1. In PowerShell, in your project folder:
+   ```
+   mkdir .claude\skills\check-delete-guard
+   ```
+2. Copy `SKILL.md` from this repository into that folder.
+3. In a new Claude Code session, ask *"Is my delete guard working?"* or type
+   `/check-delete-guard`. When Claude asks to run `python --version` and the self-test, choose Yes.
 
-Tested with Haiku on three dummy projects (hook installed, hook missing, wrong program name in the
-settings): it gave the right answer each time and no file changed.
+Tested only with Claude Haiku, on three dummy projects (hook installed, hook missing, wrong program
+name in the settings): it gave the right answer each time and no file changed. Other models were
+not tested.
 
 ## How it was tested
 
