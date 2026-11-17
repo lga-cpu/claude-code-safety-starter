@@ -184,6 +184,9 @@ Claude Code changes quickly. After an update, run `selftest.py` again.
 This hook comes from the paid kit, *Claude Code Safety Kit for Non-Programmers*. It adds three more
 hooks (changes outside the project folder, sending or publishing, risky git commands), two skills
 (project setup, checking a "done" report), backup and install tools, and a 13-page guide.
+US$19, one-time purchase, on Capafy
+(https://capafy.ai/agent/claude-code-safety-kit-for-non-programmers/7726155401)
+or Gumroad (https://lgafactory.gumroad.com/l/zvpgtz).
 
 ## License
 
